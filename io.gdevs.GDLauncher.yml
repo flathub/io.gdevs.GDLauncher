@@ -1,52 +1,52 @@
 app-id: io.gdevs.GDLauncher
-base: "org.electronjs.Electron2.BaseApp"
-base-version: "20.08"
-runtime: "org.freedesktop.Sdk"
-runtime-version: "20.08"
-sdk: "org.freedesktop.Sdk"
+base: org.electronjs.Electron2.BaseApp
+base-version: '20.08'
+runtime: org.freedesktop.Sdk
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
 sdk-extensions:
-    - org.freedesktop.Sdk.Extension.openjdk
+  - org.freedesktop.Sdk.Extension.openjdk
 command: gd.sh
 build-options:
-    env:
-        PATH: /app/jre/bin:/usr/bin
+  env:
+    PATH: /app/jre/bin:/usr/bin
 finish-args:
-    - --socket=x11
-    - --share=ipc
-    - --device=all # controller support
-    - --socket=pulseaudio
-    - --share=network
-    - --env=CHROME_WRAPPER=zypak-wrapper
-    - --filesystem=xdg-download # downloaded/export resource packs etc.
+  - --socket=x11
+  - --share=ipc
+  - --device=all   # controller support
+  - --socket=pulseaudio
+  - --share=network
+  - --env=CHROME_WRAPPER=zypak-wrapper
+  - --filesystem=xdg-download   # downloaded/export resource packs etc.
 modules:
-    - name: openjdk
-      buildsystem: simple
-      build-commands:
-        - /usr/lib/sdk/openjdk/install.sh
-    - name: gdlauncher
-      buildsystem: simple
-      build-commands:
-        - chmod +x GDLauncher-linux-setup.AppImage
-        - ./GDLauncher-linux-setup.AppImage --appimage-extract
-        - cp -r squashfs-root /app/bin/gdlauncher
-        - install -D gdlauncherscaled.png /app/share/icons/hicolor/512x512/apps/io.gdevs.GDLauncher.png
-        - install -D io.gdevs.GDLauncher.desktop /app/share/applications/io.gdevs.GDLauncher.desktop
-        - install -D io.gdevs.GDLauncher.metainfo.xml /app/share/metainfo/io.gdevs.GDLauncher.appdata.xml
-        - install -D gd.sh /app/bin
-      sources:
-          - type: file
-            url: https://github.com/gorilla-devs/GDLauncher/releases/latest/download/GDLauncher-linux-setup.AppImage
-            sha256: 83192422964903efe4a9a84b995861f506a9f47252bb8cc45f5fdd99939ba09a
-            x-checker-data:
-              type: rotating-url
-              url: https://github.com/gorilla-devs/GDLauncher/releases/latest/download/GDLauncher-linux-setup.AppImage
-          - type: file
-            path: io.gdevs.GDLauncher.desktop
-          - type: file
-            path: gdlauncherscaled.png
-          - type: file
-            path: io.gdevs.GDLauncher.metainfo.xml
-          - type: script
-            commands:
-              - zypak-wrapper /app/bin/gdlauncher/AppRun
-            dest-filename: gd.sh
+  - name: openjdk
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk/install.sh
+  - name: gdlauncher
+    buildsystem: simple
+    build-commands:
+      - chmod +x GDLauncher-linux-setup.AppImage
+      - ./GDLauncher-linux-setup.AppImage --appimage-extract
+      - cp -r squashfs-root /app/bin/gdlauncher
+      - install -D gdlauncherscaled.png /app/share/icons/hicolor/512x512/apps/io.gdevs.GDLauncher.png
+      - install -D io.gdevs.GDLauncher.desktop /app/share/applications/io.gdevs.GDLauncher.desktop
+      - install -D io.gdevs.GDLauncher.metainfo.xml /app/share/metainfo/io.gdevs.GDLauncher.appdata.xml
+      - install -D gd.sh /app/bin
+    sources:
+      - type: file
+        url: https://github-releases.githubusercontent.com/54836000/91526480-cb6a-11eb-8c37-1f777b5901e9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210621%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210621T153539Z&X-Amz-Expires=300&X-Amz-Signature=d44d5bfdb59793fbc37397424e02d12189f22b1f5b9cd7bc275b08518cb84e92&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=54836000&response-content-disposition=attachment%3B+filename%3DGDLauncher-linux-setup.AppImage&response-content-type=application%2Foctet-stream
+        sha256: 83192422964903efe4a9a84b995861f506a9f47252bb8cc45f5fdd99939ba09a
+        x-checker-data:
+          type: rotating-url
+          url: https://github.com/gorilla-devs/GDLauncher/releases/latest/download/GDLauncher-linux-setup.AppImage
+      - type: file
+        path: io.gdevs.GDLauncher.desktop
+      - type: file
+        path: gdlauncherscaled.png
+      - type: file
+        path: io.gdevs.GDLauncher.metainfo.xml
+      - type: script
+        commands:
+          - zypak-wrapper /app/bin/gdlauncher/AppRun
+        dest-filename: gd.sh
