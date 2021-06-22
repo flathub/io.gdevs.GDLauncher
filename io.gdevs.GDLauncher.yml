@@ -35,8 +35,8 @@ modules:
       - install -D gd.sh /app/bin
     sources:
       - type: file
-        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.10/GDLauncher-linux-setup.AppImage
-        sha256: 83192422964903efe4a9a84b995861f506a9f47252bb8cc45f5fdd99939ba09a
+        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.11/GDLauncher-linux-setup.AppImage
+        sha256: d52c97b577863eb35f787c9642f19a77b1a3873231da17634775623e3e36db65
         x-checker-data:
           type: json
           url: https://api.github.com/repos/gorilla-devs/GDLauncher/releases/latest
