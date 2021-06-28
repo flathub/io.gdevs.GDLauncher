@@ -14,6 +14,7 @@ finish-args:
   - --socket=x11
   - --share=ipc
   - --device=all   # controller support
+  - --device=dri  # graphics acceleration
   - --socket=pulseaudio
   - --share=network
   - --env=CHROME_WRAPPER=zypak-wrapper
