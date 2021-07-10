@@ -17,6 +17,8 @@ finish-args:
   - --socket=pulseaudio
   - --share=network
   - --env=CHROME_WRAPPER=zypak-wrapper
+  - --env=__NV_PRIME_RENDER_OFFLOAD=1
+  - --env=__GLX_VENDOR_LIBRARY_NAME=nvidia
   - --filesystem=xdg-download   # downloaded/export resource packs etc.
 modules:
   - name: openjdk
