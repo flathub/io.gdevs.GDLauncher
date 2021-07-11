@@ -53,3 +53,8 @@ modules:
         commands:
           - zypak-wrapper /app/bin/gdlauncher/AppRun
         dest-filename: gd.sh
+  - name: xrandr # if there is a better way to do this please lmk
+    sources:
+    - sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
+      type: archive
+      url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
