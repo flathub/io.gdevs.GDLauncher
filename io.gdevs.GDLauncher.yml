@@ -35,8 +35,8 @@ modules:
       - install -D gd.sh /app/bin
     sources:
       - type: file
-        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.11/GDLauncher-linux-setup.AppImage
-        sha256: d52c97b577863eb35f787c9642f19a77b1a3873231da17634775623e3e36db65
+        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.13/GDLauncher-linux-setup.AppImage
+        sha256: 065d2754b42959dcdf001b10fcc233c4bfbac9ec0b04944500b6ee321ad68065
         x-checker-data:
           type: json
           url: https://api.github.com/repos/gorilla-devs/GDLauncher/releases/latest
@@ -55,6 +55,6 @@ modules:
         dest-filename: gd.sh
   - name: xrandr # if there is a better way to do this please lmk
     sources:
-    - sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
-      type: archive
-      url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
+      - sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
+        type: archive
+        url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
