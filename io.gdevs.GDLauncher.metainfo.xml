@@ -67,8 +67,8 @@
       Built in mods manager
     </p>
     <p>
-      Auto java setup (Note that usage of Java 16 (1.17+) or higher will require manual
-      intervention: Simply right click on the instance you wish to use Java 16 for &gt; Click "Manage" &gt;
+      Auto java setup (Note that sometimes GDLauncher's java version can be behind and will require manual
+      intervention: Simply right click on the instance you wish to use Flatpak Java for &gt; Click "Manage" &gt;
       Enable "Custom Java Path" &gt; And map the path to `/app/jre/bin/java`)
     </p>
   </description>
