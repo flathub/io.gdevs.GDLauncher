@@ -1,8 +1,8 @@
 app-id: io.gdevs.GDLauncher
 base: org.electronjs.Electron2.BaseApp
-base-version: '20.08'
+base-version: '21.08'
 runtime: org.freedesktop.Sdk
-runtime-version: '20.08'
+runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.openjdk
@@ -29,9 +29,9 @@ modules:
       - chmod +x GDLauncher-linux-setup.AppImage
       - ./GDLauncher-linux-setup.AppImage --appimage-extract
       - cp -r squashfs-root /app/bin/gdlauncher
-      - install -D gdlauncherscaled.png /app/share/icons/hicolor/512x512/apps/io.gdevs.GDLauncher.png
-      - install -D io.gdevs.GDLauncher.desktop /app/share/applications/io.gdevs.GDLauncher.desktop
-      - install -D io.gdevs.GDLauncher.metainfo.xml /app/share/metainfo/io.gdevs.GDLauncher.appdata.xml
+      - install -D gdlauncherscaled.png /app/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      - install -D ${FLATPAK_ID}.desktop -t /app/share/applications
+      - install -D ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo
       - install -D gd.sh /app/bin
     sources:
       - type: file
