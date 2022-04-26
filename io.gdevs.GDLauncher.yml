@@ -1,3 +1,4 @@
+# .
 app-id: io.gdevs.GDLauncher
 base: org.electronjs.Electron2.BaseApp
 base-version: '21.08'
