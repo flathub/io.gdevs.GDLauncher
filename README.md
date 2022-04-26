@@ -32,7 +32,7 @@ flatpak-builder build-dir/ io.gdevs.GDLauncher.yml --force-clean --install --use
 
 ## How do I play versions of Minecraft that require Java non-LTS?
 
-GDLauncher is somnetimes behind in their java builds. To use the upstream flatpak Java:
+GDLauncher is sometimes behind in their java builds. To use the upstream flatpak Java:
 
 Simply right click on the instance you wish to use flatpak Java for > Click "Manage" >
  Enable "Custom Java Path" > And map the path to `/app/jre/bin/java`
