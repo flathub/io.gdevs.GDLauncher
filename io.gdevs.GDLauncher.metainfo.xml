@@ -4,9 +4,14 @@
 
   <name>GDLauncher</name>
   <summary>GDLauncher is a simple, yet powerful Minecraft custom launcher with a strong focus on the user experience. </summary>
-
+  
+  
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
+  
+  <categories>
+    <category>Game</category>
+  </categories>
 
   <developer_name>GorillaDevs</developer_name>
 
@@ -36,6 +41,7 @@
   </content_rating>
 
     <releases>
+    <release version="1.1.23" date="2022-05-15"/>
     <release version="1.1.21" date="2022-01-02"/>
     <release version="1.1.20" date="2021-12-22"/>
     <release version="1.1.19" date="2021-12-21"/>
