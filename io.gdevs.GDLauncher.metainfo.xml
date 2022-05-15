@@ -9,7 +9,9 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
   
-  <categories>Game</categories>
+  <categories>
+    <category>Game</category>
+  </categories>
 
   <developer_name>GorillaDevs</developer_name>
 
