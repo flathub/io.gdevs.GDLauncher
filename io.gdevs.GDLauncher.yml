@@ -1,6 +1,6 @@
 app-id: io.gdevs.GDLauncher
 base: org.electronjs.Electron2.BaseApp
-base-version: '22.08'
+base-version: '21.08'
 runtime: org.freedesktop.Sdk
 runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
@@ -35,8 +35,8 @@ modules:
       - install -D gd.sh /app/bin
     sources:
       - type: file
-        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.30/GDLauncher-linux-setup.AppImage
-        sha256: e1c5d3ddec61a0c00aea05b70a9c752fb726f579b414af75da019c4722d83f03
+        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.29/GDLauncher-linux-setup.AppImage
+        sha256: 84ac89e6ffbed0f182fe758465d3ac729939858e68a09354b8c3e62ca0a027af
         x-checker-data:
           type: json
           url: https://api.github.com/repos/gorilla-devs/GDLauncher/releases/latest
