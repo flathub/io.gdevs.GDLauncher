@@ -1,13 +1,10 @@
 app-id: io.gdevs.GDLauncher
 base: org.electronjs.Electron2.BaseApp
-base-version: '22.08'
+base-version: '23.08'
 runtime: org.freedesktop.Sdk
-runtime-version: '22.08'
+runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 command: gd.sh
-build-options:
-  env:
-    PATH: /app/jre/bin:/usr/bin
 finish-args:
   - --socket=x11
   - --share=ipc
@@ -29,14 +26,12 @@ modules:
       - install -D gd.sh /app/bin
     sources:
       - type: file
-        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.30/GDLauncher-linux-setup.AppImage
-        sha256: e1c5d3ddec61a0c00aea05b70a9c752fb726f579b414af75da019c4722d83f03
+        dest-filename: GDLauncher-linux-setup.AppImage
+        url: https://cdn-raw.gdl.gg/launcher/GDLauncher__2.0.20__linux__x64.AppImage
+        sha512: 40a30b1a5c7b4d175a78c1488142496b9ad3fd24845750ee352bf2376c524f3cff479a370d8faf4d216d8d14b944548e568dcbe2077d2989c55520c30fb073f4
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/gorilla-devs/GDLauncher/releases/latest
-          version-query: .tag_name | sub("^[vV]"; "")
-          url-query: |
-            .assets[] | select(.name=="GDLauncher-linux-setup.AppImage") | .browser_download_url
+          type: electron-updater
+          url: https://cdn-raw.gdl.gg/launcher/latest-linux.yml
       - type: file
         path: io.gdevs.GDLauncher.desktop
       - type: file
@@ -45,7 +40,7 @@ modules:
         path: io.gdevs.GDLauncher.metainfo.xml
       - type: script
         commands:
-          - zypak-wrapper /app/bin/gdlauncher/AppRun
+          - zypak-wrapper /app/bin/gdlauncher/@gddesktop
         dest-filename: gd.sh
   - name: xrandr # if there is a better way to do this please lmk
     sources:
