@@ -36,5 +36,25 @@ GDLauncher is sometimes behind in their java builds. To use the upstream flatpak
 
 Simply right click on the instance you wish to use flatpak Java for > Click "Manage" >
  Enable "Custom Java Path" > And map the path to `/app/jre/bin/java`
+
+Linux
+Minecraft 1.20.5 and newer (Java 21)
+
+temurin-21-jdk
+Minecraft 1.17 until 1.20.4 (Java 17)
+
+    Ubuntu/Debian derivatives: openjdk-17-jre
+    Arch jre17-openjdk
+    Fedora java-17-openjdk
+    OpenSUSE: java-17-openjdk  
+
+Minecraft 1.16 and older (Java 8)
+
+    Ubuntu/Debian derivatives: openjdk-8-jre
+    Arch jre8-openjdk
+    Fedora java-1.8.0-openjdk
+    OpenSUSE: java-1.8.0-openjdk
+
+Do not choose the headless version as that is designed for servers and not general use.  
  
 Then you should be good to go!
