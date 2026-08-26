@@ -1,54 +1,72 @@
 app-id: io.gdevs.GDLauncher
+
 base: org.electronjs.Electron2.BaseApp
-base-version: '22.08'
-runtime: org.freedesktop.Sdk
-runtime-version: '22.08'
+base-version: '25.08'
+
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
+
 command: gd.sh
+
 build-options:
   env:
     PATH: /app/jre/bin:/usr/bin
+
 finish-args:
   - --socket=x11
   - --share=ipc
-  - --device=all   # controller support
+  - --device=all
   - --socket=pulseaudio
   - --share=network
   - --env=CHROME_WRAPPER=zypak-wrapper
-  - --filesystem=xdg-download   # downloaded/export resource packs etc.
+  - --filesystem=xdg-download
+
 modules:
   - name: gdlauncher
     buildsystem: simple
+
     build-commands:
-      - chmod +x GDLauncher-linux-setup.AppImage
-      - ./GDLauncher-linux-setup.AppImage --appimage-extract
-      - cp -r squashfs-root /app/bin/gdlauncher
-      - install -D gdlauncherscaled.png /app/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
-      - install -D ${FLATPAK_ID}.desktop -t /app/share/applications
-      - install -D ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo
-      - install -D gd.sh /app/bin
+      - npm ci --offline --ignore-scripts
+      - npm run napi-build
+      - npm run nsfw-move
+      - NODE_OPTIONS=--openssl-legacy-provider npm run build
+      - NODE_OPTIONS=--openssl-legacy-provider npm run build-electron:setup
+
+      - install -d /app/main
+      - cp -a build /app/main/
+      - cp -a public /app/main/
+      - cp package.json /app/main/
+
+      - install -Dm755 gd.sh /app/bin/gd.sh
+
+      - install -Dm644 gdlauncherscaled.png /app/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      - install -Dm644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+
     sources:
-      - type: file
-        url: https://github.com/gorilla-devs/GDLauncher/releases/download/v1.1.30/GDLauncher-linux-setup.AppImage
-        sha256: e1c5d3ddec61a0c00aea05b70a9c752fb726f579b414af75da019c4722d83f03
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/gorilla-devs/GDLauncher/releases/latest
-          version-query: .tag_name | sub("^[vV]"; "")
-          url-query: |
-            .assets[] | select(.name=="GDLauncher-linux-setup.AppImage") | .browser_download_url
+      - type: git
+        url: https://github.com/TangoMango614/GDLauncher.git
+        commit: 3c4dc7f049500308fce1e353506bbdec64b2693
+
+      - generated-sources.yml
+
       - type: file
         path: io.gdevs.GDLauncher.desktop
+
       - type: file
         path: gdlauncherscaled.png
+
       - type: file
         path: io.gdevs.GDLauncher.metainfo.xml
+
       - type: script
-        commands:
-          - zypak-wrapper /app/bin/gdlauncher/AppRun
         dest-filename: gd.sh
-  - name: xrandr # if there is a better way to do this please lmk
+        commands:
+          - zypak-wrapper /app/bin/electron /app/main/build/electron.js
+
+  - name: xrandr
     sources:
-      - sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
-        type: archive
+      - type: archive
         url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
+        sha256: 7b99edb7970a136e5af5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
